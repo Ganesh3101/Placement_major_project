@@ -1,5 +1,6 @@
 package com.test.placement_major_project.main_codes
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.GridView
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         // on below line we are adding data to
         // our course list with image and course name.
-        courseList = courseList + Branch("C++", R.drawable.home)
+        courseList = courseList + Branch("COMPS", R.drawable.home)
         courseList = courseList + Branch("C++", R.drawable.home)
         courseList = courseList + Branch("main", R.drawable.home)
         courseList = courseList + Branch("C++", R.drawable.home)
@@ -45,10 +46,12 @@ class MainActivity : AppCompatActivity() {
         courseGRV.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             // inside on click method we are simply displaying
             // a toast message with course name.
-            Toast.makeText(
-                applicationContext, courseList[position].courseName + " selected",
-                Toast.LENGTH_SHORT
-            ).show()
+            if(courseList[position].courseName == "COMPS")
+            {
+                val intent = Intent(this, Comps::class.java)
+                startActivity(intent)
+            }
+
         }
     }
 }
